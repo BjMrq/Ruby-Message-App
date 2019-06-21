@@ -1,0 +1,31 @@
+<%= render 'shared/errors', obj: @user %>
+<br>
+<br>
+<div class="main ui container centered">
+  <div class="ui one column grid centered">
+    <%= form_for(@user, :html => { class: "ui form segment signup", role: "form" }) do |f| %>
+    <div class="field">
+      <div class=" ">
+        <%= f.label :username %>
+      </div>
+      <div class="field">
+        <%= f.text_field :username, class: "field", placeholder: "Enter username", autofocus: true %>
+      </div>
+    </div>
+    <div class="field">
+      <div class="field">
+        <%= f.label :password %>
+      </div>
+      <div class="field ">
+        <%= f.password_field :password, class: "field", placeholder: "Think of a good password" %>
+      </div>
+    </div>
+    <div class="field ">
+      <div class="field ">
+        <%= f.submit(@user.new_record? ? 'Sign-up' : "Update account", class: "ui orange submit button") %>
+      </div>
+    </div>
+      <% end %>
+  </div>
+</div>
+[<%= link_to "Back home", root_path %>]
