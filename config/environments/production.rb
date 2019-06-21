@@ -83,6 +83,11 @@ Rails.application.configure do
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
 
+  # Allow WebSocket usage on Heroku with Redis
+  config.web_socket_server_url = "wss://ruby-message-app.herokuapp.com/cable"
+
+  config.action_cable.allowed_request_origins = ['https://ruby-message-app.herokuapp.com', 'http://ruby-message-app.herokuapp.com']
+
   if ENV["RAILS_LOG_TO_STDOUT"].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter
