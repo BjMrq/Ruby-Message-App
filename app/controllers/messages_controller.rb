@@ -9,6 +9,17 @@ class MessagesController < ApplicationController
     end
   end
 
+  def destroy
+    messages = Message.all
+    if messages.destroy_all
+      flash[:success] = "The conversation has reset"
+      redirect_to root_path
+    else
+      flash[:danger] = "Sorry we were not able to reset the conversation, please try again"
+      redirect_to root_path
+    end
+  end
+
   private
 
   def message_params
